@@ -1,0 +1,58 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+  .error{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    .inner_error{
+        text-align: center;
+    border: 1px solid #000;
+    padding: 70px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 15px;
+    color: #f90606;
+    }
+     .inner_error h1{
+       margin-top:0px
+     }
+    .back_btn{
+    background: #f90606;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 10px;
+    }
+     .back_btn a{
+     color:#fff;
+     text-decoration: none;
+     }
+
+      .error_img img{
+      width:100%
+     }
+     .error_img{
+        width: 125px;
+    margin: 0 auto;
+     }
+  </style>
+</head>
+<body>
+<div class="error">
+  <div class="inner_error">
+      <div class="error_img"> <img src="{% static 'images/alert-icon-1562.png' %}"></div>
+      <h1>Payment Failed</h1>
+      <p>Your payment could not be processed. Please try again later.</p>
+<button class="back_btn"><a href="/contact/">Retry</a></button>
+  </div>
+
+
+
+</div>
+</body>
+</html>

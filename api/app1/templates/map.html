@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 950px;"></div>
+
+
+    <script>
+    var map = L.map('map').setView([0, 0], 10); // Default center and zoom level
+
+        // Add a tile layer (you can use other tile layers as well)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+    // Fetch delivery person's location from Django backend
+    fetch('/get_ip/')
+    .then(response => response.json())
+    .then(data => {
+        // Update map with delivery person's location
+        var lat = data.latitude;
+        var lng = data.longitude;
+        //console.log(lat,lng);
+        map.setView([lat, lng], 13); // Set map center and zoom level
+        L.marker([lat, lng]).addTo(map); // Add a marker at the delivery person's location
+    })
+    .catch(error => console.error('Error:', error));
+</script>
+
+
+
+<!--    <script>-->
+<!--    let ipdata;-->
+<!--    function SameData() {-->
+<!--    var apiUrl = "/get_ip/"-->
+<!--    fetch(apiUrl)-->
+<!--        .then(response => {-->
+<!--            if (!response.ok) {-->
+<!--                throw new Error('Network response was not ok');-->
+<!--            }-->
+<!--            return response.json();-->
+<!--        })-->
+<!--        .then(data => {-->
+<!--            ipdata = data.data.loc;-->
+<!--            console.log(' Data:', ipdata);-->
+
+<!--        })-->
+<!--        .catch(error => {-->
+<!--            console.error('Error:', error);-->
+<!--        });-->
+
+<!--};-->
+
+<!--        SameData();-->
+
+
+<!--        var lati = ipdata;-->
+
+<!--        console.log(lati);-->
+<!--        // Initialize Leaflet map-->
+<!--        var map = L.map('map').setView(lati, 10); // Default center and zoom level-->
+
+<!--        // Add a tile layer (you can use other tile layers as well)-->
+<!--        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
+<!--            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'-->
+<!--        }).addTo(map);-->
+<!--    </script>-->
+</body>
+</html>

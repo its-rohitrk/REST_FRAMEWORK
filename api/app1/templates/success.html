@@ -1,0 +1,57 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+  .success{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    .inner_success{
+        text-align: center;
+    border: 1px solid #000;
+    padding: 70px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 15px;
+    color: #57d400;
+    }
+     .inner_success h1{
+       margin-top:0px
+     }
+    .back_btn{
+    background: #57d400;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 10px;
+    }
+     .back_btn a{
+     color:#fff;
+     text-decoration: none;
+     }
+
+      .success_img img{
+      width:100%
+     }
+     .success_img{
+        width: 125px;
+    margin: 0 auto;
+     }
+  </style>
+</head>
+<body>
+<div class="success">
+  <div class="inner_success">
+      <div class="success_img"> <img src="{% static 'images/check-removebg-preview.png' %}"></div>
+      <h1>payment successfully</h1>
+<button class="back_btn"><a href="/contact/">Back</a></button>
+  </div>
+
+
+
+</div>
+</body>
+</html>
